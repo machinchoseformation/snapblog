@@ -1,12 +1,15 @@
 <?php
 
-	//index.php (contrôleur frontal)
+	//contrôleur frontal
 
 	//autochargement de classe
 	spl_autoload_register();
 
 	//récupère la méthode à appeler depuis l'URL
-	$method = $_GET['method'];
+	$method = "home";
+	if (!empty($_GET['method'])){
+		$method = $_GET['method'];
+	}
 
 	//instancie notre contrôleur
 	$controller = new MainController();

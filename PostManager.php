@@ -18,7 +18,7 @@
 			$stmt->bindValue(":content", $post->getContent());
 			$stmt->bindValue(":username", $post->getUsername());
 			$stmt->bindValue(":email", $post->getEmail());
-			$stmt->bindValue(":published", $post->getPublished());
+			$stmt->bindValue(":published", true);
 
 			return $stmt->execute();
 
@@ -30,11 +30,17 @@
 
 		//récupère un Post en fonction d'un id
 		public function findById($id){
-			//...
+			$dbh = Db::getDbh();
+
+			$sql = "SELECT * FROM post
+					WHERE id = :id";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":id", $id);
+			$stmt->execute();
 
 			//fetchObject retourne directement un objet du type spécifié
 			$post = $stmt->fetchObject("Post");
-
+			return $post;
 		}
 
 		//Récupère les x derniers Posts

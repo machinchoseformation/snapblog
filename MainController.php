@@ -37,28 +37,25 @@
 		*/
 		public function createPost(){
 
+			if (!empty($_POST)){
+
+				$postManager = new PostManager();
+
+				$post = new Post();
+				$post->setTitle( $_POST['title'] );
+				$post->setContent( $_POST['content'] );
+				$post->setUsername( $_POST['username'] );
+				$post->setEmail( $_POST['email'] );
+
+				if ( $postManager->save($post) ){
+					header("Location: index.php");
+				}
+				else {
+					die("oops");
+				}
+			}
+
+			include("pages/create_post.php");
 		}
-
-		public function insertPost(){
-
-			//instancie un post
-			$unPost = new Post();
-
-			//hydratation
-			$unPost->setId(12);
-			$unPost->setTitle("yooo");
-			$unPost->setContent("Un contenu !");
-			$unPost->setUsername("uusernnname");
-			$unPost->setEmail("yo@yo.com");
-			$unPost->setPublished(true);
-			$unPost->setDateModified(date("Y-m-d H:i:s"));
-			$unPost->setDateCreated(date("Y-m-d H:i:s"));
-
-			//crée une instance du postmanager pour sauvegarder notre post
-			$postManager = new PostManager();
-			$postManager->save( $unPost );
-
-			echo "yeah";
-		}		
 
 	}
