@@ -2,7 +2,12 @@
 
 	//index.php
 
+	require("Config.php");
 	require("Post.php");
+	require("PostManager.php");
+	require("Db.php");
+
+	echo Config::DBHOST;
 
 	$unPost = new Post();
 
@@ -15,4 +20,5 @@
 	$unPost->setDateModified(date("Y-m-d H:i:s"));
 	$unPost->setDateCreated(date("Y-m-d H:i:s"));
 
-	print_r($unPost);
+	$postManager = new PostManager();
+	$postManager->save( $unPost );
