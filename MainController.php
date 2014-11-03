@@ -36,22 +36,29 @@
 		*	Page de création d'un post (affichage et traitement)
 		*/
 		public function createPost(){
-
+			
+			$post = new Post();
+			
 			if (!empty($_POST)){
 
 				$postManager = new PostManager();
 
-				$post = new Post();
 				$post->setTitle( $_POST['title'] );
 				$post->setContent( $_POST['content'] );
 				$post->setUsername( $_POST['username'] );
 				$post->setEmail( $_POST['email'] );
 
-				if ( $postManager->save($post) ){
-					header("Location: index.php");
-				}
-				else {
-					die("oops");
+				//c'est valide ?
+				$errors = $post->isValidToInsert();
+				if ($errors === true){
+					//alors sauvegarde
+					if ( $postManager->save($post) ){
+						header("Location: index.php");
+					}
+					//sauvegarde échouée
+					else {
+						die("oops");
+					}
 				}
 			}
 

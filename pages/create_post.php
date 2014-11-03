@@ -14,21 +14,30 @@
 		<form method="POST" novalidate>
 			<div>
 				<label for="title">Titre</label>
-				<input type="text" name="title" id="title" value="" />
+				<input type="text" name="title" id="title" value="<?php echo $post->getTitle(); ?>" />
 			</div>
 			<div>
 				<label for="content">Contenu</label>
-				<textarea name="content" id="content"></textarea>
+				<textarea name="content" id="content"><?php echo $post->getContent(); ?></textarea>
 			</div>
 			<div>
 				<label for="username">Votre pseudo</label>
-				<input type="text" name="username" id="username" value="" />
+				<input type="text" name="username" id="username" value="<?php echo $post->getUsername(); ?>" />
 			</div>
 			<div>
 				<label for="email">Votre email</label>
-				<input type="email" name="email" id="email" value="" />
+				<input type="email" name="email" id="email" value="<?php echo $post->getEmail(); ?>" />
 			</div>
 			<input type="submit" value="Enregister" />
+			<?php 
+				if (!empty($errors)){
+					foreach($errors as $field){
+						foreach($field as $error){
+							echo $error . "<br />";
+						}
+					}
+				}
+			?>
 		</form>
 	</div>
 
