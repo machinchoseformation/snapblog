@@ -4,8 +4,7 @@
 
 		public function save(Post $post){
 
-			$db = new Db();
-			$dbh = $db->getDbh();
+			$dbh = Db::getDbh();
 
 			$sql = "INSERT INTO post (title, content, username, email, published, dateModified, dateCreated)
 					VALUES (:title, :content, :username, :email, :published, NOW(), NOW())";
@@ -28,6 +27,23 @@
 
 		public function findAll(){
 
+		}
+
+		public function findLatest(){
+
+			$dbh = Db::getDbh();
+
+			$sql = "SELECT * 
+					FROM post 
+					WHERE published = 1 
+					ORDER BY dateCreated DESC
+					LIMIT 10";
+
+			$stmt = $dbh->prepare($sql);
+			$stmt->execute();
+			$posts = $stmt->fetchAll(PDO::FETCH_CLASS, "Post");
+
+			return $posts;
 		}
 
 		public function update(){

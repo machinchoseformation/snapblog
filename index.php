@@ -1,24 +1,15 @@
 <?php
 
-	//index.php
+	//index.php (contrôleur frontal)
 
-	require("Config.php");
-	require("Post.php");
-	require("PostManager.php");
-	require("Db.php");
+	//autochargement de classe
+	spl_autoload_register();
 
-	echo Config::DBHOST;
+	//récupère la méthode à appeler depuis l'URL
+	$method = $_GET['method'];
 
-	$unPost = new Post();
+	//instancie notre contrôleur
+	$controller = new MainController();
 
-	$unPost->setId(12);
-	$unPost->setTitle("yooo");
-	$unPost->setContent("Un contenu !");
-	$unPost->setUsername("uusernnname");
-	$unPost->setEmail("yo@yo.com");
-	$unPost->setPublished(true);
-	$unPost->setDateModified(date("Y-m-d H:i:s"));
-	$unPost->setDateCreated(date("Y-m-d H:i:s"));
-
-	$postManager = new PostManager();
-	$postManager->save( $unPost );
+	//appelle la méthode dans le contrôleur
+	call_user_func( array($controller, $method) );
