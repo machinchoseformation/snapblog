@@ -1,7 +1,10 @@
 <?php
 
+	//classe responsable de réaliser les requêtes à la bdd pour les objets posts
+
 	class PostManager {
 
+		//enregistre un nouveau Post
 		public function save(Post $post){
 
 			$dbh = Db::getDbh();
@@ -21,14 +24,20 @@
 
 		}
 
-		public function delete(){
-
-		}
-
 		public function findAll(){
 
 		}
 
+		//récupère un Post en fonction d'un id
+		public function findById($id){
+			//...
+
+			//fetchObject retourne directement un objet du type spécifié
+			$post = $stmt->fetchObject("Post");
+
+		}
+
+		//Récupère les x derniers Posts
 		public function findLatest(){
 
 			$dbh = Db::getDbh();
@@ -47,6 +56,10 @@
 		}
 
 		public function update(){
+
+		}
+
+		public function delete(){
 
 		}
 

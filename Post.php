@@ -2,6 +2,8 @@
 
 class Post {
 
+    // propriétés de notre objet
+
 	protected $id;
 	protected $title;
 	protected $content;
@@ -10,6 +12,10 @@ class Post {
 	protected $published;
 	protected $dateModified;
 	protected $dateCreated;
+
+
+
+    //getters et setters (accesseurs / mutateurs)
 
     /**
      * Gets the value of id.
