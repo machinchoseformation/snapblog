@@ -1,5 +1,7 @@
 <?php
 
+namespace Model;
+
 class Post {
 
     // propriétés de notre objet

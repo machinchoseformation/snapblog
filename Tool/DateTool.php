@@ -1,5 +1,7 @@
 <?php
 	
+	namespace Tool;
+
 	class DateTool {
 
 		public static function mysqlDateToFr($mysqlDate){

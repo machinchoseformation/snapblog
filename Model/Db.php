@@ -1,5 +1,13 @@
 <?php
 
+namespace Model;
+
+//crée 3 alias vers les classes utilisées ici
+//ces classes sont définies sans namespace
+use \PDO as PDO;
+use \PDOException;
+use \Config;
+
 class Db {
 
 	protected static $dbh; //contient la connexion à la db

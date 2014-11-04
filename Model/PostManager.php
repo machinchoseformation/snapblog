@@ -1,5 +1,7 @@
 <?php
 
+	namespace Model;
+
 	//classe responsable de réaliser les requêtes à la bdd pour les objets posts
 
 	class PostManager {
@@ -39,7 +41,7 @@
 			$stmt->execute();
 
 			//fetchObject retourne directement un objet du type spécifié
-			$post = $stmt->fetchObject("Post");
+			$post = $stmt->fetchObject("\Model\Post");
 			return $post;
 		}
 
@@ -56,7 +58,7 @@
 
 			$stmt = $dbh->prepare($sql);
 			$stmt->execute();
-			$posts = $stmt->fetchAll(PDO::FETCH_CLASS, "Post");
+			$posts = $stmt->fetchAll(\PDO::FETCH_CLASS, "\Model\Post");
 
 			return $posts;
 		}

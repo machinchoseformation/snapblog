@@ -15,7 +15,7 @@
 			<h3>
 				<?php echo $post->getTitle(); ?>
 			</h3>
-			<p><?php echo DateTool::mysqlDateToFr( $post->getDateCreated() ); ?></p>
+			<p><?php echo \Tool\DateTool::mysqlDateToFr( $post->getDateCreated() ); ?></p>
 
 			<div>
 				<?php echo $post->getContent(); ?>

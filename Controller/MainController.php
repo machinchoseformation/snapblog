@@ -1,5 +1,10 @@
 <?php
 
+	namespace Controller;
+
+	use \Model\PostManager;
+	use \Model\Post;
+
 	//cette classe traite les requêtes et envoie les réponses
 
 	class MainController {
