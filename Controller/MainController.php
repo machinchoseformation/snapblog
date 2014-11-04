@@ -4,6 +4,8 @@
 
 	use \Model\PostManager;
 	use \Model\Post;
+	use \Model\Comment;
+	use \Model\CommentManager;
 
 	//cette classe traite les requêtes et envoie les réponses
 
@@ -30,7 +32,25 @@
 
 			//récupére le post spécifié dans l'url
 			$postManager = new PostManager();
+			$commentManager = new CommentManager();
+			
 			$post = $postManager->findById( $_GET['id'] );
+
+			$comment = new Comment();
+
+			//commentaire soumis ?
+			if (!empty($_POST)){
+				//hydratation
+				$comment->setContent( $_POST['content'] );
+				$comment->setEmail( $_POST['email'] );
+				$comment->setUsername( $_POST['username'] );
+				$comment->setPostId( $post->getId() );
+
+				$commentManager->save($comment);
+				$comment->setContent( "" ); //pour qu'il ne s'affiche plus dans le textarea
+			}
+
+			$comments = $commentManager->findCommentsByPostId( $post->getId() );
 
 			//affiche la vue
 			include("pages/details.php");

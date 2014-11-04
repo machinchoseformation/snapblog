@@ -21,6 +21,37 @@
 				<?php echo $post->getContent(); ?>
 			</div>
 		</div>
+
+		<div class="comments">
+			
+			<?php foreach($comments as $c): ?>		
+			<div>
+				<?php echo $c->getContent(); ?>
+			</div>
+			<?php endforeach; ?>
+
+
+			<form method="POST" id="comment_form" novalidate>
+
+				<input type="hidden" name="postId" value="<?php echo $post->getId(); ?>" />
+
+				<div>
+					<label for="content">Contenu</label>
+					<textarea name="content" id="content"><?php echo $comment->getContent(); ?></textarea>
+				</div>
+				<div>
+					<label for="username">Votre pseudo</label>
+					<input type="text" name="username" id="username" value="<?php echo $comment->getUsername(); ?>" />
+				</div>
+				<div>
+					<label for="email">Votre email</label>
+					<input type="email" name="email" id="email" value="<?php echo $comment->getEmail(); ?>" />
+				</div>
+				<input type="submit" value="Envoyer !" />
+			</form>
+
+		</div>
+
 	</div>
 
 </body>
