@@ -23,7 +23,7 @@ class Comment extends TextualContent {
      *
      * @return self
      */
-    protected function setPostId($postId)
+    public function setPostId($postId)
     {
         $this->postId = $postId;
 

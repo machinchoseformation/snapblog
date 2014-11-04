@@ -2,19 +2,15 @@
 
 	namespace Model;
 
-	class TextualContent {
+	class TextualContent extends Entity {
 
 
 	    // propriétés de notre objet
 
-		protected $id;
 		protected $content;
 		protected $username;
 		protected $email;
 		protected $published;
-		protected $dateModified;
-		protected $dateCreated;
-
 
 
 	    //getters et setters (accesseurs / mutateurs)
@@ -141,53 +137,6 @@
 	        return $this;
 	    }
 
-	    /**
-	     * Gets the value of dateModified.
-	     *
-	     * @return mixed
-	     */
-	    public function getDateModified()
-	    {
-	        return $this->dateModified;
-	    }
-
-	    /**
-	     * Sets the value of dateModified.
-	     *
-	     * @param mixed $dateModified the date modified
-	     *
-	     * @return self
-	     */
-	    public function setDateModified($dateModified)
-	    {
-	        $this->dateModified = $dateModified;
-
-	        return $this;
-	    }
-
-	    /**
-	     * Gets the value of dateCreated.
-	     *
-	     * @return mixed
-	     */
-	    public function getDateCreated()
-	    {
-	        return $this->dateCreated;
-	    }
-
-	    /**
-	     * Sets the value of dateCreated.
-	     *
-	     * @param mixed $dateCreated the date created
-	     *
-	     * @return self
-	     */
-	    public function setDateCreated($dateCreated)
-	    {
-	        $this->dateCreated = $dateCreated;
-
-	        return $this;
-	    }
 
 	    public function isValidToInsert(){
 	        //validation ici
