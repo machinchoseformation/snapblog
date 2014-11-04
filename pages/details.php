@@ -23,7 +23,7 @@
 		</div>
 
 		<div class="comments">
-			
+			<h2>Commentaires</h2>
 			<?php foreach($comments as $c): ?>		
 			<div>
 				<?php echo $c->getContent(); ?>

@@ -53,6 +53,7 @@
 			$sql = "SELECT * 
 					FROM post 
 					WHERE published = 1 
+					AND dateCreated > NOW() - INTERVAL 4 HOUR
 					ORDER BY dateCreated DESC
 					LIMIT 10";
 
