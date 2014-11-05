@@ -11,6 +11,9 @@
 	//include le fichier d'autochargement des codes tiers (composer)
 	include("vendor/autoload.php");
 
+	//include le dinosaure PHPMailer
+	include("vendor/phpmailer/phpmailer/PHPMailerAutoload.php");
+
 	//récupère la méthode à appeler depuis l'URL
 	$method = "home";
 	if (!empty($_GET['method'])){
