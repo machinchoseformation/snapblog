@@ -45,7 +45,7 @@ snapblog
 ####Emails
 
 * Créer une class `Mailer` dans le namespace `Controller`. 
-* Y ajouter une méthode nommée `sendThankYou($username, $email, $type)` envoyant un mail de remerciement à l'utilisateur qui vient de créer un post OU un article. Précisez le type (post || article) dans l'argument `$type` de la méthode, afin d'adapter votre message. 
+* Y ajouter une méthode nommée `sendThankYou($username, $email, $type)` envoyant un mail de remerciement à l'utilisateur qui vient de créer un post OU un article. Précisez le type (post || comment) dans l'argument `$type` de la méthode, afin d'adapter votre message. 
 * Utiliser PHPMailer pour envoyer le message.
 
 
