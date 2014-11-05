@@ -1,0 +1,14 @@
+{
+    "name": "Etudiant/sb",
+    "description": "snap blog shit",
+    "require": {
+        "cocur/slugify": "dev-master",
+        "abeautifulsite/simpleimage": "dev-master"
+    },
+    "authors": [
+        {
+            "name": "guillaume",
+            "email": "gsylvestre@gmail.com"
+        }
+    ]
+}
