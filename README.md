@@ -1,10 +1,10 @@
 snapblog
 ========
 
-##A faire | SnapBlog
+###A faire | SnapBlog
 
 
-###Sécurité
+####Sécurité
 
 * Créer une classe `SecurityTool` 
 * Y ajouter une méthode statique `safeOnSet($string)`, retournant la chaîne sans balises html
@@ -12,7 +12,7 @@ snapblog
 * Appeler ces méthodes dans les getters et setters appropriés des objets `Post` et `Comment`
 
 
-###Validation complète des formulaires
+####Validation complète des formulaires
 
 * Créez une classe `PostValidator` qui hérite de `Validator`
 * Y ajouter une méthode `isValid(Post $post){}`, retournant un booléen
@@ -27,14 +27,14 @@ snapblog
 * Idem pour les commentaires (Créez une class `CommentValidator`... etc). N'oubliez pas de valider qu'il y a bien un id de post, et que celui-ci existe.
 
 
-###Authentification
+####Authentification
 
 * Lorsqu'un utilisateur soumet un formulaire de commentaire ou d'article, sauvegarder dans 1 ou 2 cookies son username et son email, afin qu'il n'ait pas à le retaper à chaque utilisation du site. 
 * Vérifier toujours ensuite si le cookie existe afin de préremplir le formulaire. 
 * À vous de voir comment procéder/organiser votre code, il y a 300 manières de faire. 
 
 
-###Slug
+####Slug
 
 * Ajoutez un slug aux `Post` (à la classe ET à la table MySQL).
 * Générez le slug avec la classe Cocur/Slugify
@@ -42,10 +42,18 @@ snapblog
 * Utilisez le dans l'url dans la page détails à la place de l'id.
 
 
-###Emails
+####Emails
 
 * Créer une class `Mailer` dans le namespace `Controller`. 
 * Y ajouter une méthode nommée `sendThankYou($username, $email, $type)` envoyant un mail de remerciement à l'utilisateur qui vient de créer un post OU un article. Précisez le type (post || article) dans l'argument `$type` de la méthode, afin d'adapter votre message. 
 * Utiliser PHPMailer pour envoyer le message.
 
 
+####Routage
+
+* Si le temps le permet et que le coeur vous en dit, vous pouvez tenter de créer un système de routage. Un .htaccess est déjà disponible pour la réécriture d'URL.
+* L'objectif est de relier des URLs à des méthodes du controleur, ie : 
+  * si l'url est égale à `articles/`, appeler la méthode `home()`
+  * si l'url est égale à `nouvel-article/`, appeler la méthode `createPost()`
+  * le plus difficile : si l'url est égale à `articles/le-slug-d-un-article/`, appeler la méthode `details()`
+  * etc...
