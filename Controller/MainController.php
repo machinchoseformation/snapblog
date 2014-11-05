@@ -7,6 +7,7 @@
 	use \Model\Comment;
 	use \Model\CommentManager;
 	use \Model\PostValidator;
+	use \Tool\CoolCookieTool as CookieTool; //vrai alias
 
 	//cette classe traite les requêtes et envoie les réponses
 
@@ -35,9 +36,15 @@
 			$postManager = new PostManager();
 			$commentManager = new CommentManager();
 			
-			$post = $postManager->findById( $_GET['id'] );
+			$post = $postManager->findBySlug( $_GET['slug'] );
 
 			$comment = new Comment();
+
+			if (CookieTool::cookieExists("userData")){
+				$userData = CookieTool::getCookie("userData");
+				$comment->setUsername( $userData['username'] );
+				$comment->setEmail( $userData['email'] );
+			}
 
 			//commentaire soumis ?
 			if (!empty($_POST)){
@@ -48,6 +55,10 @@
 				$comment->setPostId( $post->getId() );
 
 				$commentManager->save($comment);
+
+				//crée un cookie pour sauvegarder les infos du user
+				CookieTool::createCookie("userData", array("username" => $comment->getUsername(), "email" => $comment->getEmail()));
+
 				$comment->setContent( "" ); //pour qu'il ne s'affiche plus dans le textarea
 			}
 
@@ -66,11 +77,17 @@
 			$post = new Post();
 			$postValidator = new PostValidator();
 			
+			if (CookieTool::cookieExists("userData")){
+				$userData = CookieTool::getCookie("userData");
+				$post->setUsername( $userData['username'] );
+				$post->setEmail( $userData['email'] );
+			}
+
 			if (!empty($_POST)){
 
 				$postManager = new PostManager();
-
 				$post->setTitle( $_POST['title'] );
+				$post->setSlugFromTitle();
 				$post->setContent( $_POST['content'] );
 				$post->setUsername( $_POST['username'] );
 				$post->setEmail( $_POST['email'] );
@@ -80,6 +97,10 @@
 				if ( $postValidator->isValid( $post ) ){
 					//alors sauvegarde
 					if ( $postManager->save($post) ){
+
+						//crée un cookie pour sauvegarder les infos du user
+						CookieTool::createCookie("userData", array("username" => $post->getUsername(), "email" => $post->getEmail()));
+
 						header("Location: index.php");
 					}
 					//sauvegarde échouée

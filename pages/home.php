@@ -21,7 +21,7 @@
 		<?php foreach($posts as $post){ ?>
 		<div>
 			<h3>
-			<a href="index.php?method=details&id=<?php echo $post->getId(); ?>" title="<?php echo $post->getTitle(); ?>">
+			<a href="index.php?method=details&slug=<?php echo $post->getSlug(); ?>" title="<?php echo $post->getTitle(); ?>">
 			<?php echo $post->getTitle(); ?>
 			</a>
 			</h3>

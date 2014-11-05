@@ -11,12 +11,13 @@
 
 			$dbh = Db::getDbh();
 
-			$sql = "INSERT INTO post (title, content, username, email, published, dateModified, dateCreated)
-					VALUES (:title, :content, :username, :email, :published, NOW(), NOW())";
+			$sql = "INSERT INTO post (title, slug, content, username, email, published, dateModified, dateCreated)
+					VALUES (:title, :slug, :content, :username, :email, :published, NOW(), NOW())";
 
 			$stmt = $dbh->prepare($sql);
 			
 			$stmt->bindValue(":title", 	$post->getTitle());
+			$stmt->bindValue(":slug", 	$post->getSlug());
 			$stmt->bindValue(":content", $post->getContent());
 			$stmt->bindValue(":username", $post->getUsername());
 			$stmt->bindValue(":email", $post->getEmail());
@@ -38,6 +39,22 @@
 					WHERE id = :id";
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindValue(":id", $id);
+			$stmt->execute();
+
+			//fetchObject retourne directement un objet du type spécifié
+			$post = $stmt->fetchObject("\Model\Post");
+			return $post;
+		}
+
+
+		//récupère un Post en fonction d'un id
+		public function findBySlug($slug){
+			$dbh = Db::getDbh();
+
+			$sql = "SELECT * FROM post
+					WHERE slug = :slug";
+			$stmt = $dbh->prepare($sql);
+			$stmt->bindValue(":slug", $slug);
 			$stmt->execute();
 
 			//fetchObject retourne directement un objet du type spécifié

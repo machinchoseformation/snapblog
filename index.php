@@ -1,5 +1,7 @@
 <?php
 
+	print_r($_GET);
+
 	//contrôleur frontal
 
 	//autochargement de classe
@@ -16,8 +18,8 @@
 
 	//récupère la méthode à appeler depuis l'URL
 	$method = "home";
-	if (!empty($_GET['method'])){
-		$method = $_GET['method'];
+	if (!empty($_GET['url'])){
+		$method = $_GET['url'];
 	}
 
 	//instancie notre contrôleur
