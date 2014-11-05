@@ -2,7 +2,7 @@
 
 	namespace Model;
 
-	class Entity {
+	abstract class Entity {
 
 		//aucun setter pour l'id, pas besoin
 		protected $id;

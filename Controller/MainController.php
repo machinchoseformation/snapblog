@@ -6,6 +6,7 @@
 	use \Model\Post;
 	use \Model\Comment;
 	use \Model\CommentManager;
+	use \Model\PostValidator;
 
 	//cette classe traite les requêtes et envoie les réponses
 
@@ -63,6 +64,7 @@
 		public function createPost(){
 			
 			$post = new Post();
+			$postValidator = new PostValidator();
 			
 			if (!empty($_POST)){
 
@@ -74,8 +76,8 @@
 				$post->setEmail( $_POST['email'] );
 
 				//c'est valide ?
-				$errors = $post->isValidToInsert();
-				if ($errors === true){
+				
+				if ( $postValidator->isValid( $post ) ){
 					//alors sauvegarde
 					if ( $postManager->save($post) ){
 						header("Location: index.php");

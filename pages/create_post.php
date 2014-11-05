@@ -30,8 +30,8 @@
 			</div>
 			<input type="submit" value="Enregister" />
 			<?php 
-				if (!empty($errors)){
-					foreach($errors as $field){
+				if ($postValidator->hasError()){
+					foreach($postValidator->getErrors() as $field){
 						foreach($field as $error){
 							echo $error . "<br />";
 						}

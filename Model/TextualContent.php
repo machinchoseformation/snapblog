@@ -139,21 +139,4 @@
 	        return $this;
 	    }
 
-
-	    public function isValidToInsert(){
-	        //validation ici
-	        $validator = new Validator();
-
-	        $validator->validateEmail( $this->getEmail(), "email" );
-	        $validator->validateMaxLength( $this->getEmail(), "email", 50 );
-
-	        $validator->validateMinLength( $this->getUsername(), "username" );
-	        $validator->validateMaxLength( $this->getUsername(), "username", 30 );
-
-	        if ($validator->isValid()){
-	            return true;
-	        }
-	        return $validator->getErrors();
-	    }
-
 	}

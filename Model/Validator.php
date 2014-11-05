@@ -2,9 +2,12 @@
 
 	namespace Model;
 
-	class Validator {
+	abstract class Validator {
 
 		protected $errors = array();
+
+
+		abstract public function isValid(Entity $entity);		
 
 	    public function getErrors(){
 	        return $this->errors;
@@ -14,11 +17,20 @@
 	    	$this->errors[$field][] = $error;
 	    }
 
-	    public function isValid(){
+	    public function hasError(){
 	    	if (empty($this->errors)){
-	    		return true;
+	    		return false;
 	    	}
-	    	return false;
+	    	return true;
+	    }
+
+	    public function validateAlphaNum($string, $field = ""){
+	    	$regexp = "#^[a-zA-Z0-9]*$#";
+	    	if (!preg_match($regexp, $string)){
+	    		$this->addError("Chaîne invalide (seulement des lettres et des chiffres SVP) !", $field);
+	    		return false;
+	    	}
+	    	return true;
 	    }
 
 	    public function validateEmail($string, $field = ""){
