@@ -2,6 +2,8 @@
 
 	namespace Model;
 
+	use \Tool\SecurityTool;
+
 	class TextualContent extends Entity {
 
 
@@ -48,7 +50,7 @@
 	     */
 	    public function getContent()
 	    {
-	        return $this->content;
+	        return SecurityTool::safeOnGet($this->content);
 	    }
 
 	    /**
@@ -60,7 +62,7 @@
 	     */
 	    public function setContent($content)
 	    {
-	        $this->content = $content;
+	        $this->content = SecurityTool::safeOnSet($content);
 
 	        return $this;
 	    }
@@ -72,7 +74,7 @@
 	     */
 	    public function getUsername()
 	    {
-	        return $this->username;
+	        return SecurityTool::safeOnGet($this->username);
 	    }
 
 	    /**
@@ -84,7 +86,7 @@
 	     */
 	    public function setUsername($username)
 	    {
-	        $this->username = $username;
+	        $this->username = SecurityTool::safeOnSet($username);
 
 	        return $this;
 	    }
@@ -96,7 +98,7 @@
 	     */
 	    public function getEmail()
 	    {
-	        return $this->email;
+	        return SecurityTool::safeOnGet($this->email);
 	    }
 
 	    /**
@@ -108,7 +110,7 @@
 	     */
 	    public function setEmail($email)
 	    {
-	        $this->email = $email;
+	        $this->email = SecurityTool::safeOnSet($email);
 
 	        return $this;
 	    }

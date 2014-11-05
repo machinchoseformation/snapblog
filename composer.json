@@ -1,14 +1,6 @@
 {
-    "name": "Etudiant/sb",
-    "description": "snap blog shit",
     "require": {
-        "cocur/slugify": "dev-master",
-        "abeautifulsite/simpleimage": "dev-master"
-    },
-    "authors": [
-        {
-            "name": "guillaume",
-            "email": "gsylvestre@gmail.com"
-        }
-    ]
+        "cocur/slugify": "~0.10",
+        "phpmailer/phpmailer": "~5.2"
+    }
 }

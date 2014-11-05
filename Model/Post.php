@@ -2,31 +2,18 @@
 
 namespace Model;
 
+use \Tool\SecurityTool;
+
 class Post extends TextualContent {
 
     protected $title;
 
-    /**
-     * Gets the value of title.
-     *
-     * @return mixed
-     */
-    public function getTitle()
-    {
-        return $this->title;
+    public function getTitle(){
+        return SecurityTool::safeOnGet( $this->title );
     }
 
-    /**
-     * Sets the value of title.
-     *
-     * @param mixed $title the title
-     *
-     * @return self
-     */
-    public function setTitle($title)
-    {
-        $this->title = $title;
-
+    public function setTitle($title){
+        $this->title = SecurityTool::safeOnSet( $title );
         return $this;
     }
 
