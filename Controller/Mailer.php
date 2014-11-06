@@ -7,6 +7,18 @@
 
     class Mailer {
 
+        //récupère le contenu d'un template et le retourne
+        protected function get_include_contents($filename, array $variablesToMakeLocal = array()) {
+            extract($variablesToMakeLocal);
+            $filename = "mails/".$filename;
+            if (is_file($filename)) {
+                ob_start();
+                include $filename;
+                return ob_get_clean();
+            }
+            return false;
+        }
+
         protected function getDefaultMail(){
             $mail = new PHPMailer();        //Crée un nouveau message (Objet PHPMailer)
 
@@ -33,7 +45,14 @@
             $mail->addAddress($email, $username);   //destinataire
             
             $mail->Subject = 'Merci pour votre participation sur SnapBlog !';  //le sujet
-            $mail->Body = "Merci pour votre <b>$type</b> !";                    //le message
+
+            $data =  array(
+                "username" => $username,
+                "email" => $email,
+                "type" => $type
+            );
+
+            $mail->Body = $this->get_include_contents("thankYouComment.php", $data);                    //le message
 
             //envoie le message
             return $mail->send();
