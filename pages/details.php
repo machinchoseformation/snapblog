@@ -52,7 +52,7 @@
 			</form>
 
 		</div>
-		<a href="createPost/" title="Créez un article !">Créez un article !</a>
+		<a href="nouvel-article/" title="Créez un article !">Créez un article !</a>
 
 	</div>
 

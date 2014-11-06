@@ -23,14 +23,14 @@
 		<?php foreach($posts as $post){ ?>
 		<div>
 			<h3>
-			<a href="details/<?php echo $post->getSlug(); ?>/" title="<?php echo $post->getTitle(); ?>">
+			<a href="article/<?php echo $post->getSlug(); ?>/" title="<?php echo $post->getTitle(); ?>">
 			<?php echo $post->getTitle(); ?>
 			</a>
 			</h3>
 			Temps restant : <?php echo \Tool\DateTool::timeRemaining( $post->getDateCreated() ); ?>
 		</div>
 		<?php } //ferme la boucle ?>
-		<a href="createPost/" title="Créez un article !">Créez un article !</a>
+		<a href="nouvel-article/" title="Créez un article !">Créez un article !</a>
 	</div>
 
 </body>
