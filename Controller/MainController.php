@@ -59,6 +59,10 @@
 				//crée un cookie pour sauvegarder les infos du user
 				CookieTool::createCookie("userData", array("username" => $comment->getUsername(), "email" => $comment->getEmail()));
 
+				//envoie un mail de remerciement
+				$mailer = new Mailer();
+				$mailer->sendThankYou($comment->getUsername(), $comment->getEmail(), "comment");
+
 				$comment->setContent( "" ); //pour qu'il ne s'affiche plus dans le textarea
 			}
 
@@ -100,6 +104,10 @@
 
 						//crée un cookie pour sauvegarder les infos du user
 						CookieTool::createCookie("userData", array("username" => $post->getUsername(), "email" => $post->getEmail()));
+
+						//envoie un mail de remerciement
+						$mailer = new Mailer();
+						$mailer->sendThankYou($comment->getUsername(), $comment->getEmail(), "post");
 
 						header("Location: index.php");
 					}
