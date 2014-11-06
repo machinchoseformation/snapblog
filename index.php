@@ -18,8 +18,8 @@
 
 	//récupère la méthode à appeler depuis l'URL
 	$method = "home";
-	if (!empty($_GET['url'])){
-		$method = $_GET['url'];
+	if (!empty($_GET['method'])){
+		$method = $_GET['method'];
 	}
 
 	//instancie notre contrôleur

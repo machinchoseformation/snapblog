@@ -1,6 +1,6 @@
 <?php
 
-    namespace Mailer;
+    namespace Controller;
 
     use \PHPMailer; //phpMailer n'utilise pas les namespaces... il est donc défini dans l'espace global
     use \Config;

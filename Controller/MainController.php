@@ -107,7 +107,7 @@
 
 						//envoie un mail de remerciement
 						$mailer = new Mailer();
-						$mailer->sendThankYou($comment->getUsername(), $comment->getEmail(), "post");
+						$mailer->sendThankYou($post->getUsername(), $post->getEmail(), "post");
 
 						header("Location: index.php");
 					}
