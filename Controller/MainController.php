@@ -109,7 +109,7 @@
 						$mailer = new Mailer();
 						$mailer->sendThankYou($post->getUsername(), $post->getEmail(), "post");
 
-						header("Location: index.php");
+						header("Location: " . \Config::ROOT_URL);
 					}
 					//sauvegarde échouée
 					else {
@@ -120,5 +120,12 @@
 
 			include("pages/create_post.php");
 		}
+
+
+		public function fourofour(){
+			header("HTTP/1.0 404 Not Found");
+			include("pages/fourofour.php");
+		}
+
 
 	}

@@ -1,5 +1,11 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)/(.*)/$ index.php?method=$1&slug=$2 [QSA]
-RewriteRule ^(.*)/$ index.php?method=$1 [QSA]
+RewriteRule ^article/(.*)/$ index.php?method=details&slug=$1 [QSA,L]
+RewriteRule ^nouvel-article/$ index.php?method=createPost [QSA,L]
+RewriteRule ^(.*)/$ index.php?method=$1 [QSA,L]
+
+#commenté avec dièze
+#RewriteRule ^(.*)/(.*)/$ index.php?method=$1&slug=$2 [QSA,L]
+#RewriteRule ^articles/$ articles.php [QSA,L]
+#RewriteRule ^contact/$ my-confact-form.php [QSA,L]
