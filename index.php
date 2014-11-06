@@ -1,7 +1,5 @@
 <?php
 
-	print_r($_GET);
-
 	//contrôleur frontal
 
 	//autochargement de classe
