@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>SnapBlog</title>
+	<base href="<?php echo Config::ROOT_URL ?>" />
 	<meta name="description" content="">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
@@ -51,6 +52,7 @@
 			</form>
 
 		</div>
+		<a href="createPost/" title="Créez un article !">Créez un article !</a>
 
 	</div>
 

@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>Créez un article | SnapBlog</title>
+	<base href="<?php echo Config::ROOT_URL ?>" />
 	<meta name="description" content="">
 	<link href="css/style.css" type="text/css" rel="stylesheet" />
 </head>
