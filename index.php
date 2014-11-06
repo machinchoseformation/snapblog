@@ -24,4 +24,10 @@
 	$controller = new Controller\MainController(); //au lieu du use, on peut toujours utiliser le fully qualified name
 
 	//appelle la méthode dans le contrôleur
-	call_user_func( array($controller, $method) );
+	if (method_exists($controller, $method)){
+		call_user_func( array($controller, $method) );
+	}
+	//erreur 404
+	else {
+		call_user_func( array($controller, "fourofour") );
+	}
